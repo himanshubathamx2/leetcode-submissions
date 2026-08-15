@@ -6,31 +6,49 @@ class Solution {
         int[] drow = new int[]{1, -1, 0, 0};
         int[] dcol = new int[]{0, 0, 1, -1};
 
-        //top
+        // //top
+        // for(int j=0; j<m; j++){
+        //     if(vis[0][j] == 0 && board[0][j] =='O'){
+        //         dfs(0, j, board, drow, dcol, vis);
+        //     }
+        // }
+
+        // //right
+        // for(int i=1; i<n; i++){
+        //     if(vis[i][m-1] == 0 && board[i][m-1] =='O'){
+        //         dfs(i, m-1, board, drow, dcol, vis);
+        //     }
+        // }
+
+        // //bottom
+        // for(int j=m-2; j>=0; j--){
+        //     if(vis[n-1][j] == 0 && board[n-1][j] =='O'){
+        //         dfs(n-1, j, board, drow, dcol, vis);
+        //     }
+        // }
+
+        // //left
+        // for(int i=n-2; i>=0; i--){
+        //     if(vis[i][0] == 0 && board[i][0] =='O'){
+        //         dfs(i, 0, board, drow, dcol, vis);
+        //     }
+        // }
+
         for(int j=0; j<m; j++){
             if(vis[0][j] == 0 && board[0][j] =='O'){
                 dfs(0, j, board, drow, dcol, vis);
             }
-        }
-
-        //right
-        for(int i=1; i<n; i++){
-            if(vis[i][m-1] == 0 && board[i][m-1] =='O'){
-                dfs(i, m-1, board, drow, dcol, vis);
-            }
-        }
-
-        //bottom
-        for(int j=m-2; j>=0; j--){
-            if(vis[n-1][j] == 0 && board[n-1][j] =='O'){
+            if(vis[n-1][j]==0 && board[n-1][j] =='O'){
                 dfs(n-1, j, board, drow, dcol, vis);
             }
         }
 
-        //left
-        for(int i=n-2; i>=0; i--){
-            if(vis[i][0] == 0 && board[i][0] =='O'){
+        for(int i=0; i<n; i++){
+            if(vis[i][0]==0 && board[i][0] =='O'){
                 dfs(i, 0, board, drow, dcol, vis);
+            }
+            if(vis[i][m-1]==0 && board[i][m-1] =='O'){
+                dfs(i, m-1, board, drow, dcol, vis);
             }
         }
 
