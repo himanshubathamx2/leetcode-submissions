@@ -11,9 +11,7 @@ class Solution {
 
         sb.append(a);
         c++;
-        // if(rabin(sb.toString(), b) != -1)
-        //     return c;
-        if(sb.toString().indexOf(b) != -1)
+        if(rabin(sb.toString(), b) != -1)
             return c;
         return -1;
     }
