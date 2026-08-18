@@ -13,9 +13,6 @@ class Solution {
     }
 
     private boolean isSameTree(TreeNode root1, TreeNode root2) {
-        // if (root1 == null && root2 == null) {
-        //     return true;
-        // }
         if (root1 == null || root2 == null) {
             return root1 == root2;
         }
