@@ -14,7 +14,7 @@ class Solution {
                 if (leftToRight) {
                     list.add(node.val);
                 } else {
-                    list.addFirst(node.val);
+                    list.add(0, node.val);
                 }
                 if (node.left != null) q.offer(node.left);
                 if (node.right != null) q.offer(node.right);
