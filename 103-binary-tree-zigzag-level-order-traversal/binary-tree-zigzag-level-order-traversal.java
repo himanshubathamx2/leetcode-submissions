@@ -7,7 +7,7 @@ class Solution {
         boolean leftToRight = true;
         while (!q.isEmpty()) {
             int size = q.size();
-            LinkedList<Integer> list = new LinkedList<>();
+            List<Integer> list = new ArrayList<>();
             int count = 0;
             while (count < size) {
                 TreeNode node = q.poll();
