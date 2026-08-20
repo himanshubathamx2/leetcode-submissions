@@ -24,7 +24,7 @@ class Pair{
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         Queue<Pair> q = new LinkedList<>();
-        TreeMap<Integer, Integer> map = new TreeMap<>();
+        Map<Integer, Integer> map = new TreeMap<>();
         List<Integer> ans = new ArrayList<>();
         if(root == null)
             return ans;
