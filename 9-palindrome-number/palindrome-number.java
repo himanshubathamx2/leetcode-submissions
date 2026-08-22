@@ -1,20 +1,17 @@
 class Solution {
     public boolean isPalindrome(int x) {
-      int original =x;
-      String palin= "";
-      if(x<0)
-        return false;
-      else if(x==0)
-        return true;  
-      int d=0;
-      int n=x;
-      while(n!=0){
-        d= n%10;
-        n=n/10;
-        palin= palin + d; 
-      }  
-      if(palin.equals(x+""))
-        return true;
-      else
-        return false;  
-}}
+        int back = 0;
+        int orignal = x;
+        while(x > 0){
+            int d = x % 10;
+            x = x / 10;
+            back = back * 10 + d;
+        }
+        return back == orignal;
+    }
+}
+
+
+// 1 
+// 1 * 10 + 2 = 12
+// 12 * 10 + 1
