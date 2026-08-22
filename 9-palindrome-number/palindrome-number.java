@@ -10,8 +10,3 @@ class Solution {
         return back == orignal;
     }
 }
-
-
-// 1 
-// 1 * 10 + 2 = 12
-// 12 * 10 + 1
