@@ -6,7 +6,8 @@ class Solution {
         }
 
         for(int i=1; i<k; i++){
-            nums[0] = Integer.MIN_VALUE;
+            nums[0] = nums[n-1];
+            n--;
             maxHeapify(nums, n, 0);
         }
         return nums[0];
