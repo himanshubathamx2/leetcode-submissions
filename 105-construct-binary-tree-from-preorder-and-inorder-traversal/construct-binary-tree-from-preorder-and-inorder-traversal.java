@@ -30,7 +30,7 @@ class Solution {
         TreeNode root = new TreeNode(preorder[preStart]);
         int rootIndex = map.get(preorder[preStart]);
         int numLeft = rootIndex - inStart;
-        root.left = build(preorder, preStart + 1, preStart + numLeft, inorder, inStart, inStart + numLeft - 1, map);
+        root.left = build(preorder, preStart + 1, preStart + numLeft, inorder, inStart, rootIndex - 1, map);
         root.right = build(preorder, preStart + numLeft + 1, preEnd, inorder, rootIndex + 1, inEnd, map);
         return root;
     }
