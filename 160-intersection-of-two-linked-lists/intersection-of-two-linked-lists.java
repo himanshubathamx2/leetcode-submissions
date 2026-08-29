@@ -21,8 +21,7 @@ public class Solution {
                 return tmp1;
 
             tmp1 = tmp1.next;
-            tmp2 = tmp2.next;
-             
+            tmp2 = tmp2.next; 
            
         }
         return null;
