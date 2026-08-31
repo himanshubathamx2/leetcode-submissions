@@ -25,11 +25,13 @@ class Solution {
                 tmp2 = tmp2.next;
             }
         }
+
         while(tmp1 != null){
             curr.next = tmp1;
             curr = tmp1;
             tmp1 = tmp1.next;
         }
+
         while(tmp2 != null){
             curr.next = tmp2;
             curr = tmp2;
