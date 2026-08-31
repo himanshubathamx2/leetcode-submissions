@@ -1,35 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-
-        if (lists == null || lists.length == 0) {
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b)->Integer.compare(a.val, b.val));
+        if(lists.length == 0)
             return null;
+        for(ListNode head : lists){
+            if(head != null)
+                pq.offer(head);
         }
-
-        PriorityQueue<ListNode> pq =
-            new PriorityQueue<>((a, b) -> Integer.compare(a.val, b.val));
-
-        // Add first node of every list
-        for (ListNode list : lists) {
-            if (list != null) {
-                pq.offer(list);
-            }
-        }
-
         ListNode dummy = new ListNode(-1);
         ListNode curr = dummy;
-
-        while (!pq.isEmpty()) {
-
-            ListNode node = pq.poll();
-
-            curr.next = node;
-            curr = node;
-
-            if (node.next != null) {
-                pq.offer(node.next);
+        while(!pq.isEmpty()){
+            ListNode popped = pq.poll();
+            ListNode newNode = new ListNode(popped.val);
+            curr.next = newNode;
+            curr = newNode;
+            if(popped.next != null){
+                pq.offer(popped.next);
             }
         }
-
         return dummy.next;
     }
 }
