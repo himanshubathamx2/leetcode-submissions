@@ -13,7 +13,7 @@ class Solution {
         return nums[0];
     }
 
-     public static void maxHeapify(int[] nums, int n, int i) {
+    public static void maxHeapify(int[] nums, int n, int i) {
         int largest = i; // Initialize largest as root
         int left = 2 * i + 1;
         int right = 2 * i + 2;
