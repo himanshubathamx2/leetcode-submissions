@@ -19,15 +19,17 @@ class Solution {
             pq.offer(new Pair(arr[i], i));
         }
 
+        int c = 0;
         while(!pq.isEmpty()){
             Pair popped = pq.poll();
             int val = popped.val;
             int index = popped.index;
             if(prev == val){
-                ans[index] = rank;    
-            }else{
-                ans[index] = ++rank;
+                ans[index] = c;
                 prev = val;
+            }else{
+               ans[index] = ++c;
+               prev = val;     
             }
         }
         return ans;
