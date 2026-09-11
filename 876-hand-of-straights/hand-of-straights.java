@@ -1,31 +1,31 @@
 class Solution {
-    public boolean isNStraightHand(int[] hand, int groupSize) {
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-        for(int i=0;i<hand.length;i++){
-            map.put(hand[i], map.getOrDefault(hand[i], 0)+1);
+    public boolean isNStraightHand(int[] hand, int gs) {
+        Map<Integer, Integer> map = new TreeMap<>();
+        int n = hand.length;
+        for(int h : hand){
+            map.put(h, map.getOrDefault(h, 0) + 1);
         }
-        while(map.size() > 0){
-            // int curr = map.entrySet().iterator().next().getKey();
-            int curr = minKey(map);
-            for(int i=0;i<groupSize;i++){
-                int card = curr + i;
-                if(!map.containsKey(card))
+
+        while(!map.isEmpty()){
+            int min = getMin(map);
+            for(int i=1; i<=gs; i++){
+                if(!map.containsKey(min))
                     return false;
-                int val = map.get(card);
-                val--;
-                if(val > 0)
-                    map.put(card, val);
-                if(val == 0)
-                    map.remove(card);            
+                int freq = map.get(min);
+                freq--;
+                if(freq > 0)
+                    map.put(min, freq);
+                else if(freq == 0)
+                    map.remove(min);    
+                min++;
             }
         }
         return true;
     }
 
-    public int minKey(TreeMap<Integer, Integer> map){
-        for(int n : map.keySet()){
+    public int getMin(Map<Integer, Integer> map){
+        for(int n : map.keySet())
             return n;
-        } 
-        return -1;   
+        return -1;
     }
 }
