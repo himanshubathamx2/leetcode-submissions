@@ -9,20 +9,20 @@ class Solution {
        return ans;
     }
     
-    public void solve(int row, char[][] board, List<List<String>> ans, int n){
-        if(row==n){
-            List<String> solvedBoard = new ArrayList<>();
-            for(char[] horizontal : board){
-                String s = new String(horizontal);
-                solvedBoard.add(s);
+    public void solve(int col, char[][] board, List<List<String>> ans, int n){
+        if(col==n){
+            List<String> list = new ArrayList<>();
+            for(char[] row : board){
+                String s = new String(row);
+                list.add(s);
             }
-            ans.add(new ArrayList<>(solvedBoard));
+            ans.add(new ArrayList<>(list));
             return;
         }
-        for(int col=0;col<n;col++){
+        for(int row=0;row<n;row++){
             if(safe(row, col, board, n)){
                 board[row][col]='Q';
-                solve(row+1, board, ans, n);
+                solve(col+1, board, ans, n);
                 board[row][col] ='.';
             }
         }
@@ -39,18 +39,18 @@ class Solution {
         }
         row = dupRow;
         col = dupCol;
-        while(row>=0 && col < n){
+        while(row<n && col>=0){
             if(board[row][col]=='Q')
                 return false;
-            row--;
-            col++;    
+            row++;
+            col--;    
         }
         row = dupRow;
         col = dupCol;
-        while(row >= 0){
+        while(col>=0){
             if(board[row][col]=='Q')
                 return false;
-            row--;
+            col--;    
         }
         return true;
     }
