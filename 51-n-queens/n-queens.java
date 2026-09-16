@@ -11,12 +11,12 @@ class Solution {
     
     public void solve(int col, char[][] board, List<List<String>> ans, int n){
         if(col==n){
-            List<String> list = new ArrayList<>();
+            List<String> solvedBoard = new ArrayList<>();
             for(char[] row : board){
                 String s = new String(row);
-                list.add(s);
+                solvedBoard.add(s);
             }
-            ans.add(new ArrayList<>(list));
+            ans.add(new ArrayList<>(solvedBoard));
             return;
         }
         for(int row=0;row<n;row++){
