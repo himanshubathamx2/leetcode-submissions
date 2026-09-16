@@ -52,6 +52,14 @@ class Solution {
                 return false;
             col--;    
         }
+
+        row = dupRow;
+        col = dupCol;
+        while(row >= 0){
+            if(board[row][col]=='Q')
+                return false;
+            row--;
+        }
         return true;
     }
 }
