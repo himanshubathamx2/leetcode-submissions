@@ -1,7 +1,7 @@
 class Solution {
     public int countGoodNumbers(long n) {
         long odd = n/2;
-        long even = (n+1)/2;
+        long even = n - odd;
         long mod = (int)1e9 + 7;
         long ans = (pow(5, even) * pow(4, odd)) % mod;
         return (int)ans;
