@@ -15,8 +15,8 @@ class Solution {
         }
     
         f(i+1, ans, s+'(', n, c+1);
-        if(c - 1 >= 0){   
+        // if(c - 1 >= 0){   
             f(i+1, ans, s+')', n, c-1);
-        }
+        // }
     }    
 }
