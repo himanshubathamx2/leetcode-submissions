@@ -1,51 +1,36 @@
 class Solution {
-    public List<String> addOperators(String num, int target) {
+
+    public List<String> addOperators(String s, int target) {
         List<String> ans = new ArrayList<>();
-        backtrack(ans, num, target, 0, 0, 0, "");
+        dfs(0, "", 0, 0, s, target, ans);
         return ans;
     }
 
-    private void backtrack(List<String> ans, String num, int target, int i,
-            long currVal, long lastVal, String expr) {
-
-        if (i == num.length()) {
-            if (currVal == target) {
-                ans.add(expr);
-            }
+    private void dfs(int i, String path, long resSoFar, long prevNum, String s, int target, List<String> ans) {
+        if (i == s.length()) {
+            if (resSoFar == target)
+                ans.add(path);
             return;
         }
 
-        for (int ind = i; ind < num.length(); ind++) {
+        for (int j = i; j < s.length(); j++) {
+            if (j > i && s.charAt(i) == '0')
+                break; // Skip leading zero number
 
-            if (ind > i && num.charAt(i) == '0') {
-                break;
-            }
-
-            String part = num.substring(i, ind + 1);
-            long numValue = Long.parseLong(part);
+            long currNum = Long.parseLong(s.substring(i, j + 1));
 
             if (i == 0) {
-                // First number, no operator
-                backtrack(ans, num, target, ind + 1,
-                        numValue, numValue, part);
+                dfs(j + 1, "" + currNum, currNum, currNum, s, target, ans);
+                // First num, pick it without adding any operator
             } else {
                 // Addition
-                backtrack(ans, num, target, ind + 1,
-                        currVal + numValue,
-                        numValue,
-                        expr + "+" + part);
+                dfs(j + 1, path + "+" + currNum, resSoFar + currNum, currNum, s, target, ans);
 
                 // Subtraction
-                backtrack(ans, num, target, ind + 1,
-                        currVal - numValue,
-                        -numValue,
-                        expr + "-" + part);
+                dfs(j + 1, path + "-" + currNum, resSoFar - currNum, -currNum, s, target, ans);
 
                 // Multiplication
-                backtrack(ans, num, target, ind + 1,
-                        currVal - lastVal + (lastVal * numValue),
-                        lastVal * numValue,
-                        expr + "*" + part);
+                dfs(j + 1, path + "*" + currNum, resSoFar - prevNum + prevNum * currNum,prevNum * currNum, s, target, ans);
             }
         }
     }
