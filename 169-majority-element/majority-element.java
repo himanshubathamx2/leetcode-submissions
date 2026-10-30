@@ -13,13 +13,6 @@ class Solution {
                 c--;
             }
         }
-        c = 0;
-        for(int i=0; i < n; i++){
-            if(ele == nums[i])
-                c++;
-        }
-        if(c >= Math.ceil(n/2))
-            return ele;
-        return -1;
+        return ele;
     }
 }
